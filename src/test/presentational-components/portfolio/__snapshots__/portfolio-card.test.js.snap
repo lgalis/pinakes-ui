@@ -15,7 +15,7 @@ exports[`<PortfolioCard /> should render correctly 1`] = `
               Object {
                 "copy": true,
                 "destroy": true,
-                "set_approval": true,
+                "tags": true,
                 "share": true,
                 "unshare": true,
                 "update": true,
@@ -51,7 +51,7 @@ exports[`<PortfolioCard /> should render correctly 1`] = `
         <Text
           component="small"
         >
-          by 
+          by
           Owner
         </Text>
       </TextContent>
