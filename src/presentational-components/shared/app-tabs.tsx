@@ -8,25 +8,24 @@ export interface AppTabsProps {
   tabItems: {
     name: string;
     eventKey: number;
-    title: string;
-    disabled?: boolean;
+    message: string;
   }[];
 }
-const AppTabs: React.ComponentType<AppTabsProps> = ({ tabItems }) => {
+const AppTabs: React.ComponentType<AppTabsProps> = (tabs: AppTabsProps) => {
   const { push } = useEnhancedHistory();
   const { pathname, search } = useLocation();
-  const activeTab = tabItems.find(({ name }) => pathname.includes(name));
+  const activeTab = tabs.tabItems.find(({ name }) => pathname.includes(name));
   const handleTabClick = (
     _event: React.MouseEvent<HTMLElement, MouseEvent>,
     tabIndex: number | string
-  ) => push({ pathname: tabItems[tabIndex as number].name, search });
+  ) => push({ pathname: tabs.tabItems[tabIndex as number].name, search });
 
   return (
     <Tabs
       activeKey={activeTab ? activeTab.eventKey : 0}
       onSelect={handleTabClick}
     >
-      {tabItems.map((item) => (
+      {tabs.tabItems.map((item) => (
         <Tab
           title={item.title}
           key={item.eventKey}
